@@ -1,0 +1,17 @@
+- name: Deploy Tomcat Application
+  hosts: tomcat
+  tasks:
+    - name: Ensure Tomcat is installed
+      yum:
+        name: tomcat
+        state: present
+
+    - name: Copy WAR file to Tomcat webapps directory
+      copy:
+        src: /path/to/your.war
+        dest: /var/lib/tomcat/webapps/your.war
+
+    - name: Start Tomcat service
+      service:
+        name: tomcat
+        state: started
